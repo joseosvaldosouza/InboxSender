@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InboxSender - SMTP Profissional</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        .header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0056b3;
+            padding: 10px 0;
+        }
+        .nav a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav a:hover {
+            background-color: #00408a;
+        }
+        .banner {
+            background-color: #007BFF;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .banner h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+        .banner p {
+            font-size: 1.2em;
+        }
+        .banner .button {
+            background-color: white;
+            color: #007BFF;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .banner .button:hover {
+            background-color: #e0e0e0;
+        }
+        .video-container {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .video-container iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: 0;
+            border-radius: 15px;
+        }
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .section h2 {
+            font-size: 2.5em;
+            color: #007BFF;
+        }
+        .section p {
+            font-size: 1.1em;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-container input, .form-container textarea {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .form-container .button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .form-container .button:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+        }
+        .whatsapp-button img {
+            width: 40px;
+            height: 40px;
+        }
+        .whatsapp-button:hover {
+            background-color: #20b358;
+        }
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            z-index: 2000;
+            display: none;
+        }
+        .cookie-banner button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cookie-banner button:hover {
+            background-color: #0056b3;
+        }
+        .advantages {
+            background-color: #f1f1f1;
+            padding: 40px;
+            text-align: center;
+        }
+        .advantages h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .advantages p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+        .advantages a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .advantages a:hover {
+            text-decoration: underline;
+        }
+        .testimonials {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        .testimonials h2 {
+            font-size: 2.5em;
+            color: #007BFF;
+        }
+        .testimonial {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+        }
+        .testimonial p {
+            font-style: italic;
+        }
+        .testimonial .name {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .statistics {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f1f1f1;
+        }
+        .statistics h2 {
+            font-size: 2.5em;
+            color: #007BFF;
+        }
+        .statistics .stat {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        .faq {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .faq h2 {
+            font-size: 2.5em;
+            color: #007BFF;
+        }
+        .faq .question {
+            font-weight: bold;
+            margin: 20px 0 10px;
+        }
+        .faq .answer {
+            margin: 0 0 20px;
+        }
+        .case-studies {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .case-studies h2 {
+            font-size: 2.5em;
+            color: #007BFF;
+        }
+        .case-study {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+        }
+        .case-study h3 {
+            font-size: 1.5em;
+            color: #333;
+        }
+        .case-study p {
+            margin: 10px 0;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (!localStorage.getItem('cookies-accepted')) {
+                document.querySelector('.cookie-banner').style.display = 'block';
+            }
+        });
+
+        function acceptCookies() {
+            localStorage.setItem('cookies-accepted', 'true');
+            document.querySelector('.cookie-banner').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <h1>InboxSender</h1>
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="planos.html">Planos</a>
+            <a href="contato.html">Contato</a>
+        </div>
+    </div>
+
+    <div class="banner">
+        <h1>Serviço de SMTP Profissional</h1>
+        <p>Envie e-mails garantidos na caixa de entrada, sem risco de blacklist. Experimente gratuitamente!</p>
+        <a href="https://wa.me/5511973288372?text=Gostaria%20de%20solicitar%20o%20teste%20gratuito%20do%20serviço%20de%20SMTP." class="button" target="_blank">Solicite Seu Teste Gratuito</a>
+    </div>
+
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/q_n7cG91BYM" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="section advantages">
+        <h2>Vantagens do Nosso Serviço</h2>
+        <p><strong>📬 Emails Garantidos na Caixa de Entrada:</strong> Aumente suas taxas de abertura e impacto.</p>
+        <p><strong>🚫 Sem Blacklist:</strong> Envie seus e-mails sem restrições.</p>
+        <p><strong>🖥 100% Online:</strong> Monitore e gerencie suas campanhas de qualquer dispositivo.</p>
+        <p><strong>📜 Sem Necessidade de Listas:</strong> Capture leads reais automaticamente.</p>
+        <p><strong>📱 Funciona em Qualquer Dispositivo:</strong> Flexibilidade total para você.</p>
+        <p><strong>🖱 Envie Emails com Apenas 5 Cliques:</strong> Simplicidade e eficiência na ponta dos dedos.</p>
+        <p><a href="https://youtu.be/q_n7cG91BYM" target="_blank">Veja nosso Tutorial de Uso</a></p>
+    </div>
+
+    <div class="section testimonials">
+        <h2>Depoimentos de Clientes</h2>
+        <div class="testimonial">
+            <p>"O serviço da InboxSender revolucionou nosso e-mail marketing! A entrega é excelente e o suporte é impecável."</p>
+            <p class="name">- João Meireles, PostaPro </p>
+        </div>
+        <div class="testimonial">
+            <p>"Finalmente encontrei uma solução que garante a chegada dos meus e-mails na caixa de entrada dos meus clientes."</p>
+            <p class="name">- Carla Oliveira, InstaMailer</p>
+        </div>
+    </div>
+
+    <div class="section statistics">
+        <h2>Estatísticas de Sucesso</h2>
+        <p class="stat"><strong>🚀 99.9%</strong> de Taxa de Entrega</p>
+        <p class="stat"><strong>📈 30%</strong> de Aumento nas Taxas de Abertura</p>
+        <p class="stat"><strong>💼 100+</strong> Empresas Satisfeitas</p>
+    </div>
+
+    <div class="section faq">
+        <h2>Perguntas Frequentes</h2>
+        <div class="question">Como funciona o teste gratuito?</div>
+        <div class="answer">Você pode solicitar um teste gratuito entrando em contato conosco. Enviaremos um formulário para capturar seus dados e configurar seu acesso.</div>
+        <div class="question">Quais são os planos disponíveis?</div>
+        <div class="answer">Oferecemos vários planos que se adequam às necessidades de diferentes empresas. Você pode conferir todos os detalhes na página de planos.</div>
+        <div class="question">O serviço é seguro?</div>
+        <div class="answer">Sim, garantimos segurança total nas transmissões de e-mail e seguimos todas as regulamentações de proteção de dados.</div>
+    </div>
+
+    <div class="section case-studies">
+        <h2>Casos de Sucesso</h2>
+        <div class="case-study">
+            <h3>SendWise - Aumento de 50% nas Vendas</h3>
+            <p>Com o uso do nosso serviço de SMTP, a Empresa A conseguiu aumentar significativamente suas vendas ao melhorar a comunicação por e-mail com seus clientes.</p>
+        </div>
+        <div class="case-study">
+            <h3>ConnectMails - Redução de Custos com Marketing</h3>
+            <p>DirectSend reduziu seus custos de marketing em 30% ao usar nossa plataforma para segmentar e otimizar suas campanhas de e-mail.</p>
+        </div>
+    </div>
+
+    <div class="section form-container" id="contact">
+        <h2>Solicite Seu Teste Gratuito</h2>
+        <form action="https://wa.me/5511973288372?text=Gostaria%20de%20solicitar%20o%20teste%20gratuito%20do%20serviço%20de%20SMTP." method="post">
+            <input type="text" name="name" placeholder="Nome" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="tel" name="phone" placeholder="Telefone">
+            <textarea name="message" placeholder="Mensagem"></textarea>
+            <button type="submit" class="button">Enviar Solicitação</button>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>Entre em Contato:</p>
+        <p>Telefone: +55 11 97328-8372 | E-mail: joseosvaldosouza99@gmail.com</p>
+        <p>Endereço: Avenida Vereador José Diniz, 11322, São Paulo - SP, 04604-001</p>
+        <p>&copy; 2024 InboxSender. Todos os direitos reservados.</p>
+        <p><a href="termos-de-uso.html">Termos de Uso</a> | <a href="politica-privacidade.html">Política de Privacidade</a> | <a href="politica-cookies.html">Política de Cookies</a></p>
+    </div>
+
+    <div class="whatsapp-button">
+        <a href="https://wa.me/5511973288372?text=Gostaria%20de%20solicitar%20o%20teste%20gratuito%20do%20serviço%20de%20SMTP." target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+    </div>
+
+    <div class="cookie-banner">
+        <p>Este site usa cookies para garantir que você tenha a melhor experiência. Ao continuar navegando, você concorda com o uso de cookies.</p>
+        <button onclick="acceptCookies()">Aceitar</button>
+    </div>
+</body>
+</html>
